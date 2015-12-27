@@ -82,7 +82,7 @@ extension TodoTableViewController : UITextFieldDelegate {
                     textField.text = nil
                     self.tableView!.reloadData()
                 }
-            case let .Remove(index):
+            case .Remove(_):
                 break
             }
         }
