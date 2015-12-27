@@ -32,7 +32,7 @@ class TodoTableViewController : UIViewController {
         title.text = "Todoリスト🐶🐮"
         header.addSubview(title)
         
-        let button = UIButton.buttonWithType(.System) as! UIButton
+        let button = UIButton(type: .System)
         button.frame = CGRect(x: 320 - 50, y: 20, width: 50, height: 44)
         button.setTitle("追加", forState: .Normal)
         button.addTarget(self, action:"showCreateView", forControlEvents: .TouchUpInside)
@@ -71,13 +71,13 @@ extension TodoTableViewController : UITextFieldDelegate {
         if let type = self.alertType {
             switch type {
             case .Create:
-                let todo = TODO(title: textField.text)
+                let todo = TODO(title: textField.text!)
                 if self.todo.create(todo) {
                     textField.text = nil
                     self.tableView!.reloadData()
                 }
             case let .Update(index):
-                let todo = TODO(title: textField.text)
+                let todo = TODO(title: textField.text!)
                 if self.todo.update(todo, at:index) {
                     textField.text = nil
                     self.tableView!.reloadData()

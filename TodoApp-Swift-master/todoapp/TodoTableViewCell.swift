@@ -17,7 +17,7 @@ class TodoTableViewCell : UITableViewCell {
     weak var delegate: TodoTableViewCellDelegate?
     var haveButtonsDisplayed = false
     
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
@@ -41,14 +41,14 @@ class TodoTableViewCell : UITableViewCell {
         
         self.contentView.backgroundColor = UIColor.whiteColor()
         
-        let updateButton = UIButton.buttonWithType(.System) as! UIButton
+        let updateButton = UIButton(type: .System)
         updateButton.frame = CGRect(x: size.width - 100, y: origin.y, width: 50, height: size.height)
         updateButton.backgroundColor = UIColor.lightGrayColor()
         updateButton.setTitle("編集", forState: .Normal)
         updateButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         updateButton.addTarget(self, action: "updateTodo", forControlEvents: .TouchUpInside)
         
-        let removeButton = UIButton.buttonWithType(.System) as! UIButton
+        let removeButton = UIButton(type: .System)
         removeButton.frame = CGRect(x: size.width - 50, y: origin.y, width: 50, height: size.height)
         removeButton.backgroundColor = UIColor.redColor()
         removeButton.setTitle("削除", forState: .Normal)
